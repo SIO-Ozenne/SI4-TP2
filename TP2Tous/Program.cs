@@ -1,6 +1,6 @@
 ﻿using System;
-// ReSharper disable TooWideLocalVariableScope
 
+// ReSharper disable TooWideLocalVariableScope
 // ReSharper disable InlineOutVariableDeclaration
 // ReSharper disable SuggestVarOrType_BuiltInTypes
 // ReSharper disable ArrangeTypeModifiers
@@ -263,7 +263,7 @@ namespace TP2Tous
             {
                 Console.Write("\t\tCadre (O/N): ");
                 repCadre = Console.ReadKey();
-                Console.Write('\n'); // Revenir a la ligne car on lit que la touche
+                Console.Write('\n');
                 if (repCadre.Key == ConsoleKey.O || repCadre.Key == ConsoleKey.N)
                 {
                     cadre = repCadre.KeyChar;
@@ -300,8 +300,6 @@ namespace TP2Tous
             } while (!valid);
 
             Console.WriteLine();
-
-            // Affichage des résultats
             Console.WriteLine("Calcul:");
             Console.WriteLine(SEPARATEUR);
             Console.WriteLine("\t\tNom:\t\t{0} {1}", nom?.ToUpper(), prenom);
@@ -310,7 +308,6 @@ namespace TP2Tous
             Console.WriteLine("\t\tSalaire:\t{0}", salaire);
             Console.WriteLine("\t\tPrime:\t\t{0}", salaire * 0.08);
 
-            // Appuyer sur une touche pour continuer
             Console.ReadKey();
         }
 
@@ -318,28 +315,43 @@ namespace TP2Tous
         {
             Console.Title = "Produits de nombres";
 
-            // Déclarer les variables
             int nombreA, nombreB, resultat;
+            string strNombreA, strNombreB;
+            bool valid = false;
 
-            // Saisir la variable nombreA
-            Console.Write("Entrez le nombre 1: ");
-            nombreA = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("Entrez le nombre 1: ");
+                strNombreA = Console.ReadLine();
+                if (int.TryParse(strNombreA, out nombreA))
+                    valid = true;
+                else
+                    ColorWrite(ConsoleColor.Red, "Saisie erronée.");
+            } while (!valid);
 
-            // Saisir la variable nombreB
-            Console.Write("Entrez le nombre 2: ");
-            nombreB = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            valid = false;
 
-            // Effectuer le calcul du produit de nombreA et nombreB
+            do
+            {
+                Console.Write("Entrez le nombre 2: ");
+                strNombreB = Console.ReadLine();
+                if (int.TryParse(strNombreB, out nombreB))
+                    valid = true;
+                else
+                    ColorWrite(ConsoleColor.Red, "Saisie erronée.");
+            } while (!valid);
+
             resultat = nombreA * nombreB;
 
-            // Afficher le resultat du calcul
-            Console.WriteLine("Resultat du produit:");
-            Console.WriteLine(nombreA + " * " + nombreB + " = " + resultat);
+            Console.WriteLine();
+            Console.WriteLine("Calcul:");
+            Console.WriteLine(SEPARATEUR);
+            Console.WriteLine("{0} * {1} = {2}", nombreA, nombreB, resultat);
 
-            // Appuyer sur une touche pour continuer
             Console.ReadKey();
         }
-        
+
         public static void ColorWrite(ConsoleColor color, string message)
         {
             Console.ForegroundColor = color;

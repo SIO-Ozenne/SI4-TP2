@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 
+// ReSharper disable SwitchStatementMissingSomeCases
 // ReSharper disable TooWideLocalVariableScope
 // ReSharper disable InlineOutVariableDeclaration
 // ReSharper disable SuggestVarOrType_BuiltInTypes
@@ -302,11 +303,11 @@ namespace TP2Tous
             Console.WriteLine();
             Console.WriteLine("Calcul:");
             Console.WriteLine(SEPARATEUR);
-            Console.WriteLine("\t\tNom:\t\t{0} {1}", nom?.ToUpper(), prenom);
-            Console.WriteLine("\t\tCadre:\t\t{0}", cadre.ToString().ToUpper());
-            Console.WriteLine("\t\tAnnée embauche:\t{0}", annee);
-            Console.WriteLine("\t\tSalaire:\t{0}", salaire);
-            Console.WriteLine("\t\tPrime:\t\t{0}", salaire * 0.08);
+            Console.WriteLine("\t\tNom:\t\t {0} {1}", nom.ToUpper(), prenom);
+            Console.WriteLine("\t\tCadre:\t\t {0}", cadre.ToString().ToUpper());
+            Console.WriteLine("\t\tAnnée embauche: {0}", annee);
+            Console.WriteLine("\t\tSalaire:\t {0}", salaire);
+            Console.WriteLine("\t\tPrime:\t\t {0}", salaire * 0.08);
 
             Console.ReadKey();
         }
